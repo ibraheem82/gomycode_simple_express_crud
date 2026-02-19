@@ -47,9 +47,9 @@ app.post("/students/single", async(req, res) => {
 app.post("/students/many", async(req, res) => {
     try {
         
-        // 
+        // req.body is now Array of students, not just one
         const studentsData = req.body;
-
+// INsertMany takes the array and saves them all to the database at once
         const newStudents = await Student.insertMany(studentsData);
         res.status(201).json({
             message: "Students added successfully",
